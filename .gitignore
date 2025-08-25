@@ -1,0 +1,44 @@
+# =============== #
+# Unity Generated #
+# =============== #
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+
+# ===================== #
+# Visual Studio / Rider #
+# ===================== #
+.vs/
+.vscode/
+.idea/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+
+# ============ #
+# OS Specific  #
+# ============ #
+.DS_Store
+Thumbs.db
+
+# =========== #
+# Crash/Debug #
+# =========== #
+sysinfo.txt
+
+# ===== #
+# Cache #
+# ===== #
+*.apk
+*.aab
+*.unitypackage
