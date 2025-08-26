@@ -315,7 +315,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 65.79, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -396,10 +396,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 64
   length: 64
-  roomWidthMin: 3
-  roomWidthMax: 5
-  roomLengthMin: 3
-  roomLengthMax: 5
+  roomWidthMin: 5
+  roomWidthMax: 8
+  roomLengthMin: 5
+  roomLengthMax: 8
   levelLayoutDisplay: {fileID: 325497442}
 --- !u!4 &386035123
 Transform:

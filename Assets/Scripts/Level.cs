@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Level
 {
@@ -8,14 +9,20 @@ public class Level
     List<Room> rooms;
     List<Hallway> hallways;
 
-    public int Width { get { return width; } set { width = value; } }
-    public int Length { get { return length; } set { length = value; } }
+    public int Width => width;
+    public int Length => length;
+
+    public Room[] Rooms => rooms.ToArray();
+    public Hallway[] Hallways => hallways.ToArray();
 
     public Level(int width, int length)
     {
         this.width = width;
         this.length = length;
-        hallways = new List<Hallway>();
         rooms = new List<Room>();
+        hallways = new List<Hallway>();
     }
+
+    public void AddRoom(Room newRoom) => rooms.Add(newRoom);
+    public void AddHallway(Hallway newHallway) => hallways.Add(newHallway);
 }
