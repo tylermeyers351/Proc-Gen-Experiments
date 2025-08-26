@@ -223,7 +223,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.3521633, y: -0.3848336, z: -11.124494}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 64, y: 64, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -289,7 +289,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -400,6 +400,7 @@ MonoBehaviour:
   roomWidthMax: 5
   roomLengthMin: 3
   roomLengthMax: 5
+  levelLayoutDisplay: {fileID: 325497442}
 --- !u!4 &386035123
 Transform:
   m_ObjectHideFlags: 0
