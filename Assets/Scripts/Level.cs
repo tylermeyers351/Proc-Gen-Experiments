@@ -5,8 +5,8 @@ public class Level
 {
     int width;
     int length;
-    List<Hallway> hallways;
     List<Room> rooms;
+    List<Hallway> hallways;
 
     public int Width { get { return width; } set { width = value; } }
     public int Length { get { return length; } set { length = value; } }

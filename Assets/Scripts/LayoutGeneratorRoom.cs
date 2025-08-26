@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class LayoutGeneratorRoom : MonoBehaviour
@@ -11,6 +12,7 @@ public class LayoutGeneratorRoom : MonoBehaviour
     [SerializeField] int roomLengthMax = 5;
 
     [SerializeField] GameObject levelLayoutDisplay;
+    [SerializeField] List<Hallway> openDoorways;
 
     System.Random random;
 
@@ -18,8 +20,13 @@ public class LayoutGeneratorRoom : MonoBehaviour
     public void GenerateLevel()
     {
         random = new System.Random();
+        openDoorways = new List<Hallway>();
         var roomRect = GetStartRoomRect();
         Debug.Log(roomRect);
+        Room room = new Room(roomRect);
+        List<Hallway> hallways = room.CalculateAllPossibleDoorways(room.Area.width, room.Area.height, 1);
+        hallways.ForEach((h) => h.StartRoom = room);
+        hallways.ForEach((h) => openDoorways.Add(h));
         DrawLayout(roomRect);
     }
 
@@ -48,6 +55,12 @@ public class LayoutGeneratorRoom : MonoBehaviour
         levelLayoutDisplay.transform.localScale = new Vector3(width, length, 1);
         layoutTexture.FillWithColor(Color.black);
         layoutTexture.DrawRectangle(roomCandidateRect, Color.cyan);
+
+        foreach (Hallway hallway in openDoorways)
+        {
+            layoutTexture.SetPixel(hallway.StartPositionAbsolute.x, hallway.StartPositionAbsolute.y, Color.red);
+        }
+
         layoutTexture.SaveAsset();
     }
 
