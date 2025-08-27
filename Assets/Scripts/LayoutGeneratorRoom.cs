@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class LayoutGeneratorRoom : MonoBehaviour
 {
@@ -32,16 +33,15 @@ public class LayoutGeneratorRoom : MonoBehaviour
         hallways.ForEach((h) => openDoorways.Add(h));
         level.AddRoom(room);
 
-        Room testRoom1 = new Room(new RectInt(3, 6, 6, 10));
-        Room testRoom2 = new Room(new RectInt(15, 4, 10, 12));
-        Hallway testHallway = new Hallway(HallwayDirection.Right, new Vector2Int(6, 3), testRoom1);
-        testHallway.EndPosition = new Vector2Int(0, 5);
-        testHallway.EndRoom = testRoom2;
-        level.AddRoom(testRoom1);
-        level.AddRoom(testRoom2);
-        level.AddHallway(testHallway);
+        Hallway selectedEntryway = openDoorways[random.Next(openDoorways.Count)];
+        Hallway selectedExit = SelectHallwayCandidate(new RectInt(0, 0, 5, 7), selectedEntryway);
+        Debug.Log(selectedExit.StartPosition);
+        Debug.Log(selectedExit.StartDirection);
 
-        DrawLayout(roomRect);
+        Vector2Int roomCandidatePosition = CalculateRoomPosition(selectedEntryway, 5, 7, 3, selectedExit.StartPosition);
+        Room secondRoom = new Room(new RectInt(roomCandidatePosition.x, roomCandidatePosition.y, 5, 7));
+
+        DrawLayout(selectedEntryway, roomRect);
     }
 
     RectInt GetStartRoomRect()
@@ -59,11 +59,11 @@ public class LayoutGeneratorRoom : MonoBehaviour
         return new RectInt(roomX, roomY, roomWidth, roomLength);
     }
 
-    void DrawLayout(RectInt roomCandidateRect = new RectInt())
+    void DrawLayout(Hallway selectedEntryway = null, RectInt roomCandidateRect = new RectInt())
     {
         var renderer = levelLayoutDisplay.GetComponent<Renderer>();
 
-        var layoutTexture = (Texture2D) renderer.sharedMaterial.mainTexture;
+        var layoutTexture = (Texture2D)renderer.sharedMaterial.mainTexture;
 
         layoutTexture.Reinitialize(width, length);
         levelLayoutDisplay.transform.localScale = new Vector3(width, length, 1);
@@ -79,7 +79,27 @@ public class LayoutGeneratorRoom : MonoBehaviour
             layoutTexture.SetPixel(hallway.StartPositionAbsolute.x, hallway.StartPositionAbsolute.y, hallway.StartDirection.GetColor());
         }
 
+        if (selectedEntryway != null)
+        {
+            layoutTexture.SetPixel(selectedEntryway.StartPositionAbsolute.x, selectedEntryway.StartPositionAbsolute.y, Color.red);
+        }
+
         layoutTexture.SaveAsset();
+    }
+
+    Hallway SelectHallwayCandidate(RectInt roomCandidateRect, Hallway entryway)
+    {
+        Room room = new Room(roomCandidateRect);
+        List<Hallway> candidates = room.CalculateAllPossibleDoorways(room.Area.width, room.Area.height, 1);
+        HallwayDirection requiredDirection = entryway.StartDirection.GetOppositeDirection();
+        List<Hallway> filteredHallwayCandidates = candidates.Where(hallwayCandidate => hallwayCandidate.StartDirection == requiredDirection).ToList();
+        return filteredHallwayCandidates.Count > 0 ? filteredHallwayCandidates[random.Next(filteredHallwayCandidates.Count)] : null;
+    }
+
+    Vector2Int CalculateRoomPosition(Hallway entryway, int roomWidth, int roomLength, int distance, Vector2Int endPosition)
+    {
+        Vector2Int roomPosition = entryway.StartPositionAbsolute;
+        return roomPosition;
     }
 
 }
