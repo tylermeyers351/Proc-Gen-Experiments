@@ -40,6 +40,10 @@ public class LayoutGeneratorRoom : MonoBehaviour
 
         Vector2Int roomCandidatePosition = CalculateRoomPosition(selectedEntryway, 5, 7, 3, selectedExit.StartPosition);
         Room secondRoom = new Room(new RectInt(roomCandidatePosition.x, roomCandidatePosition.y, 5, 7));
+        selectedEntryway.EndRoom = secondRoom;
+        selectedEntryway.EndPosition = selectedExit.StartPosition;
+        level.AddRoom(secondRoom);
+        level.AddHallway(selectedEntryway);
 
         DrawLayout(selectedEntryway, roomRect);
     }
@@ -98,7 +102,31 @@ public class LayoutGeneratorRoom : MonoBehaviour
 
     Vector2Int CalculateRoomPosition(Hallway entryway, int roomWidth, int roomLength, int distance, Vector2Int endPosition)
     {
+        //Absolute
         Vector2Int roomPosition = entryway.StartPositionAbsolute;
+
+        //Relative to second room
+        // Vector2Int endPosition;
+
+        switch (entryway.StartDirection)
+        {
+            case HallwayDirection.Left:
+                roomPosition.x -= distance + roomWidth;
+                roomPosition.y -= endPosition.y;
+                break;
+            case HallwayDirection.Top:
+                roomPosition.x -= endPosition.x;
+                roomPosition.y += distance + 1;
+                break;
+            case HallwayDirection.Right:
+                roomPosition.x += distance + 1;
+                roomPosition.y -= endPosition.y;
+                break;
+            case HallwayDirection.Bottom:
+                roomPosition.x -= endPosition.x;
+                roomPosition.y -= distance + roomLength;
+                break;
+        }
         return roomPosition;
     }
 
