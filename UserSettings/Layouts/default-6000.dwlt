@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 989
   m_ShowMode: 4
-  m_Title: Inspector
+  m_Title: Scene
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -991,9 +991,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 13.526571, y: -3.1184402, z: -15.661116}
+    m_Target: {x: 22.708658, y: -2.934988, z: -15.723731}
     speed: 2
-    m_Value: {x: 13.526571, y: -3.1184402, z: -15.661116}
+    m_Value: {x: 22.708658, y: -2.934988, z: -15.723731}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1043,9 +1043,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 33.79305
+    m_Target: 40.054523
     speed: 2
-    m_Value: 33.79305
+    m_Value: 40.054523
   m_Ortho:
     m_Target: 1
     speed: 2
