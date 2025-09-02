@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 64
   length: 64
-  roomWidthMin: 3
-  roomWidthMax: 5
-  roomLengthMin: 3
-  roomLengthMax: 5
-  doorDistanceFromEdge: 1
+  roomWidthMin: 7
+  roomWidthMax: 15
+  roomLengthMin: 7
+  roomLengthMax: 15
+  doorDistanceFromEdge: 0
   minCorridorLength: 2
   maxCorridorLength: 5
-  maxRoomCount: 10
+  maxRoomCount: 20
   minRoomDistance: 1

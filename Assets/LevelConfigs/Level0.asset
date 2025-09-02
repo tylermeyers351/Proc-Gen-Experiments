@@ -18,6 +18,19 @@ MonoBehaviour:
   roomWidthMax: 5
   roomLengthMin: 3
   roomLengthMax: 5
+  roomTemplates:
+  - name: SmallRoom
+    numberOfRooms: 10
+    roomWidthMin: 3
+    roomWidthMax: 5
+    roomLengthMin: 3
+    roomLengthMax: 5
+  - name: LargeRoom
+    numberOfRooms: 3
+    roomWidthMin: 10
+    roomWidthMax: 15
+    roomLengthMin: 10
+    roomLengthMax: 15
   doorDistanceFromEdge: 1
   minCorridorLength: 2
   maxCorridorLength: 5
