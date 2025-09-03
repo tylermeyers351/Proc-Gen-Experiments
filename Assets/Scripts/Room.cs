@@ -19,8 +19,20 @@ public class Room
         LayoutTexture = layoutTexture;
     }
 
-    // The paramters (inputs) are the room width, room length, and distance from the corner (edge) to allow doors.
     public List<Hallway> CalculateAllPossibleDoorways(int width, int length, int minDistanceFromEdge)
+    {
+        if (LayoutTexture == null)
+        {
+            return CalculateAllPossibleDoorwaysForRectangularRooms(width, length, minDistanceFromEdge);
+        }
+        else
+        {
+            return CalculateAllPossibleDoorwayPositions((Texture2D)LayoutTexture);
+        }
+    }
+
+    // The paramters (inputs) are the room width, room length, and distance from the corner (edge) to allow doors.
+    public List<Hallway> CalculateAllPossibleDoorwaysForRectangularRooms(int width, int length, int minDistanceFromEdge)
     {
         List<Hallway> hallwayCandidates = new List<Hallway>();
 
@@ -47,5 +59,33 @@ public class Room
         }
 
         return hallwayCandidates;
+    }
+
+    List<Hallway> CalculateAllPossibleDoorwayPositions(Texture2D layoutTexture)
+    {
+        List<Hallway> possibleHallwayPositions = new List<Hallway>();
+        int width = layoutTexture.width;
+        int height = layoutTexture.height;
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                Color pixelColor = layoutTexture.GetPixel(x, y);
+                HallwayDirection direction = GetHallwayDirection(pixelColor);
+                if (direction != HallwayDirection.Undefined)
+                {
+                    Hallway hallway = new Hallway(direction, new Vector2Int(x, y));
+                    possibleHallwayPositions.Add(hallway);
+                }
+            }
+        }
+        return possibleHallwayPositions;
+    }
+
+    HallwayDirection GetHallwayDirection(Color color)
+    {
+        Dictionary<Color, HallwayDirection> colorToDirectionMap = HallwayDirectionExtension.GetColorToDirectionMap();
+        
+        return colorToDirectionMap.TryGetValue(color, out HallwayDirection direction) ? direction : HallwayDirection.Undefined;
     }
 }
