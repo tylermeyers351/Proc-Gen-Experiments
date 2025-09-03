@@ -14,19 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 64
   length: 64
-  roomWidthMin: 3
-  roomWidthMax: 5
-  roomLengthMin: 3
-  roomLengthMax: 5
   roomTemplates:
   - name: SmallRoom
-    numberOfRooms: 10
+    numberOfRooms: 8
     roomWidthMin: 3
     roomWidthMax: 5
     roomLengthMin: 3
     roomLengthMax: 5
   - name: LargeRoom
-    numberOfRooms: 3
+    numberOfRooms: 2
     roomWidthMin: 10
     roomWidthMax: 15
     roomLengthMin: 10

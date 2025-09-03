@@ -6,10 +6,17 @@ public class Room
 {
     RectInt area;
     public RectInt Area { get { return area; } }
+    public Texture LayoutTexture { get; }
 
     public Room(RectInt area)
     {
         this.area = area;
+    }
+
+    public Room(int x, int y, Texture2D layoutTexture)
+    {
+        area = new RectInt(x, y, layoutTexture.width, layoutTexture.height);
+        LayoutTexture = layoutTexture;
     }
 
     // The paramters (inputs) are the room width, room length, and distance from the corner (edge) to allow doors.
