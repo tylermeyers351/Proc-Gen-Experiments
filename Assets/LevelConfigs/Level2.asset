@@ -15,13 +15,6 @@ MonoBehaviour:
   width: 64
   length: 64
   roomTemplates:
-  - name: Bedrooms
-    numberOfRooms: 5
-    roomWidthMin: 4
-    roomWidthMax: 8
-    roomLengthMin: 4
-    roomLengthMax: 8
-    layoutTexture: {fileID: 0}
   - name: Main Hall
     numberOfRooms: 1
     roomWidthMin: 15
@@ -29,15 +22,50 @@ MonoBehaviour:
     roomLengthMin: 15
     roomLengthMax: 25
     layoutTexture: {fileID: 0}
-  - name: Large Rooms
-    numberOfRooms: 2
-    roomWidthMin: 8
-    roomWidthMax: 12
-    roomLengthMin: 8
-    roomLengthMax: 12
+  - name: Special Room
+    numberOfRooms: 1
+    roomWidthMin: 3
+    roomWidthMax: 4
+    roomLengthMin: 3
+    roomLengthMax: 4
+    layoutTexture: {fileID: 2800000, guid: 9695be4523295f644b85fadbc176833b, type: 3}
+  - name: Special Room
+    numberOfRooms: 1
+    roomWidthMin: 3
+    roomWidthMax: 4
+    roomLengthMin: 3
+    roomLengthMax: 4
+    layoutTexture: {fileID: 2800000, guid: e7ebf9cc549921246951254f982fdc64, type: 3}
+  - name: Special Room
+    numberOfRooms: 1
+    roomWidthMin: 3
+    roomWidthMax: 4
+    roomLengthMin: 3
+    roomLengthMax: 4
+    layoutTexture: {fileID: 2800000, guid: 91bb04a65cc636d4896ad6d21bab63c6, type: 3}
+  - name: Special Room
+    numberOfRooms: 1
+    roomWidthMin: 3
+    roomWidthMax: 4
+    roomLengthMin: 3
+    roomLengthMax: 4
+    layoutTexture: {fileID: 2800000, guid: 4f97bb370be17c245898acd7599801e2, type: 3}
+  - name: Special Room
+    numberOfRooms: 1
+    roomWidthMin: 3
+    roomWidthMax: 4
+    roomLengthMin: 3
+    roomLengthMax: 4
+    layoutTexture: {fileID: 2800000, guid: e7421a7271b63a842aad6e0285d650b2, type: 3}
+  - name: Regular Room
+    numberOfRooms: 8
+    roomWidthMin: 4
+    roomWidthMax: 8
+    roomLengthMin: 4
+    roomLengthMax: 8
     layoutTexture: {fileID: 0}
-  doorDistanceFromEdge: 0
-  minCorridorLength: 2
-  maxCorridorLength: 5
+  doorDistanceFromEdge: 1
+  minCorridorLength: 3
+  maxCorridorLength: 8
   maxRoomCount: 20
   minRoomDistance: 1

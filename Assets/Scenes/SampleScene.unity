@@ -394,8 +394,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 951c1a24ae38ba64fabb2d81f5e590f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seed: 1641464671
-  levelConfig: {fileID: 11400000, guid: 9196d6472f4648e4e9ab547692f9aa4b, type: 2}
+  seed: 1656977609
+  levelConfig: {fileID: 11400000, guid: f1a4563d09dcde549ac3446698844d14, type: 2}
   levelLayoutDisplay: {fileID: 325497442}
 --- !u!4 &386035123
 Transform:

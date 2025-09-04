@@ -36,8 +36,8 @@ MonoBehaviour:
     roomLengthMin: 8
     roomLengthMax: 12
     layoutTexture: {fileID: 0}
-  doorDistanceFromEdge: 0
+  doorDistanceFromEdge: 1
   minCorridorLength: 2
-  maxCorridorLength: 5
+  maxCorridorLength: 10
   maxRoomCount: 20
-  minRoomDistance: 1
+  minRoomDistance: 3
