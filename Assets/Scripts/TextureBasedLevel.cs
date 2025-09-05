@@ -23,10 +23,6 @@ public class TextureBasedLevel : ILevel
             return true;
         }
         Color pixel = levelTexture.GetPixel(x, y);
-        if (Color.black.Equals(pixel))
-        {
-            return true;
-        }
-        return false;
+        return Color.black.Equals(pixel) ? true : false;
     }
 }
