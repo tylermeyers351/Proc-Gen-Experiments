@@ -7,7 +7,6 @@ using Unity.VisualScripting;
 
 public class LayoutGeneratorRoom : MonoBehaviour
 {
-    [SerializeField] int seed = Environment.TickCount;
     [SerializeField] RoomLevelLayoutConfiguration levelConfig;
 
     [SerializeField] GameObject levelLayoutDisplay;
@@ -20,7 +19,8 @@ public class LayoutGeneratorRoom : MonoBehaviour
     [ContextMenu("Generate Level Layout")]
     public void GenerateLevel()
     {
-        random = new Random(seed);
+        SharedLevelData.Instance.ResetRandom();
+        random = SharedLevelData.Instance.Rand;
         availableRooms = levelConfig.GetAvailableRooms();
         openDoorways = new List<Hallway>();
         level = new Level(levelConfig.Width, levelConfig.Length);
@@ -41,7 +41,7 @@ public class LayoutGeneratorRoom : MonoBehaviour
     [ContextMenu("Generate New Seed")]
     public void GenerateNewSeed()
     {
-        seed = Environment.TickCount;
+        SharedLevelData.Instance.GenerateSeed();
     }
 
     [ContextMenu("Generate New Seed and Level")]
