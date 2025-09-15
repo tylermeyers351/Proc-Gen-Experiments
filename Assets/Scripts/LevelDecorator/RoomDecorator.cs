@@ -6,6 +6,8 @@ public class RoomDecorator : MonoBehaviour
 {
     [SerializeField] GameObject parent;
     [SerializeField] LayoutGeneratorRoom layoutGenerator;
+    [SerializeField] Texture2D levelTexture;
+    [SerializeField] Texture2D decoratedTexture;
 
     Random random;
 
@@ -21,23 +23,62 @@ public class RoomDecorator : MonoBehaviour
     {
         random = SharedLevelData.Instance.Rand;
 
-        // The transform of the game object named "Decorations". This is found by searching the children of "Level Geometry".
         Transform decorationsTransform = parent.transform.Find("Decorations");
 
-        // If it doesn't exist...
         if (decorationsTransform == null)
         {
             GameObject decorationsGameObject = new GameObject("Decorations");
             decorationsTransform = decorationsGameObject.transform;
             decorationsTransform.SetParent(parent.transform);
         }
-        // if it returns null (there is no "Decorations" game object childed within the parent transform.)
         else
         {
             decorationsTransform.DestroyAllChildren();
         }
 
-        GameObject testGameObject = new GameObject("Test Game Object");
-        testGameObject.transform.SetParent(decorationsTransform);
+        TileType[,] levelDecorated = InitializeDecoratorArray();
+        GenerateTextureFromTileType(levelDecorated);
+    }
+
+    private TileType[,] InitializeDecoratorArray()
+    {
+        TileType[,] levelDecorated = new TileType[levelTexture.width, levelTexture.height];
+        for (int y = 0; y < levelTexture.height; y++)
+        {
+            for (int x = 0; x < levelTexture.width; x++)
+            {
+                Color pixelColor = levelTexture.GetPixel(x, y);
+                if (pixelColor == Color.black)
+                {
+                    levelDecorated[x, y] = TileType.Wall;
+                }
+                else
+                {
+                    levelDecorated[x, y] = TileType.Floor;
+                }
+            }
+        }
+        return levelDecorated;
+    }
+
+    private void GenerateTextureFromTileType(TileType[,] tileTypes)
+    {
+        int width = tileTypes.GetLength(0);
+        int length = tileTypes.GetLength(1);
+
+        Color32[] pixels = new Color32[width * length];
+        for (int y = 0; y < length; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                pixels[x + y * width] = tileTypes[x, y].GetColor();
+            }
+        }
+
+        decoratedTexture.Reinitialize(width, length);
+        decoratedTexture.SetPixels32(pixels);
+        decoratedTexture.Apply();
+        decoratedTexture.SaveAsset();
+
     }
 }
