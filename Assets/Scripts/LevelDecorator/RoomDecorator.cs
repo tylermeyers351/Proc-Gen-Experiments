@@ -9,6 +9,8 @@ public class RoomDecorator : MonoBehaviour
     [SerializeField] Texture2D levelTexture;
     [SerializeField] Texture2D decoratedTexture;
 
+    [SerializeField] BaseDecoratorRule[] availableRules;
+
     Random random;
 
     [ContextMenu("Place Items")]
@@ -37,7 +39,17 @@ public class RoomDecorator : MonoBehaviour
         }
 
         TileType[,] levelDecorated = InitializeDecoratorArray();
+        DecorateRoom(levelDecorated, level.Rooms[0], decorationsTransform);
         GenerateTextureFromTileType(levelDecorated);
+    }
+
+    private void DecorateRoom(TileType[,] levelDecorated, Room room, Transform decorationsTransform)
+    {
+        BaseDecoratorRule selectedRule = availableRules[0];
+        if (selectedRule.CanBeApplied(levelDecorated, room))
+        {
+            selectedRule.Apply(levelDecorated, room, decorationsTransform);
+        }
     }
 
     private TileType[,] InitializeDecoratorArray()
