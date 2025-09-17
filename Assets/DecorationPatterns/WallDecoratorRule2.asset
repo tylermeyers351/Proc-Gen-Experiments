@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   placement:
-    array: 040000000200000004000000020000000400000002000000
-    width: 2
-    height: 3
+    array: 020000000200000002000000040000000400000004000000
+    width: 3
+    height: 2
   fill:
-    array: 040000000200000004000000030000000400000002000000
-    width: 2
-    height: 3
+    array: 020000000200000002000000050000000500000005000000
+    width: 3
+    height: 2
