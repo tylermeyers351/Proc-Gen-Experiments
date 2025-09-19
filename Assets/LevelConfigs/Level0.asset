@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level0
   m_EditorClassIdentifier: 
   width: 64
-  length: 64
+  length: 32
   roomTemplates:
   - name: SmallRoom
     numberOfRooms: 8
@@ -21,12 +21,14 @@ MonoBehaviour:
     roomWidthMax: 5
     roomLengthMin: 3
     roomLengthMax: 5
+    layoutTexture: {fileID: 0}
   - name: LargeRoom
     numberOfRooms: 2
     roomWidthMin: 10
     roomWidthMax: 15
     roomLengthMin: 10
     roomLengthMax: 15
+    layoutTexture: {fileID: 0}
   doorDistanceFromEdge: 1
   minCorridorLength: 2
   maxCorridorLength: 5
